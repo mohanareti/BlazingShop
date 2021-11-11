@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BlazingShop.DomainModel.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <style>
+    </style>
+</head>
+<h1></h1>
+<body style="background-color: aliceblue;">
+    
+    <div class="content px-3" >
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-3">
+                    <div class=" card-background card mb-4" style="background: url('/images/CardBg.jpg');box-shadow:6px 8px #888888; border-radius:8px">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal text-center">
+                                <label style="font-size:23px;color:steelblue;">@item.PName</label>
+                            </h4>
+                        </div>
+                        <div style="padding-left:20px;">
+                            <img class="card-img-top" src="~/Uploads/@item.Image"
+                                 style="height:150px;width:200px"
+                                 asp-append-version="true" />
+                            <label style="font-size:20px; color:#a51313"><b> @item.Price.ToString("c")</b>/sq.ft</label>
+                        </div>
+                        <div class="card-body card-background">
+                            <div class="d-flex justify-content-between align-items-center" style="margin-left:50px">
+
+                                <a asp-action="Details" asp-controller="UserMvc" asp-route-id="@item.PId" class="btn btn-success pull-right btn-outline-info text-white">Details</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+    </div>
+
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script >
+
+    //$(Document).scroll(function () {
+    //    if ($(this).scrollTop() > 0) {
+    //        $(".row").hide();
+    //    }
+    //    else {
+    //        $(".row").show();
+    //    }
+    //});
+    //$(function () {
+    //    $(window).scroll(function () {
+    //        if ($(this).scrollTop() > 0) {
+    //            $('.content').fadeIn();
+    //        }
+    //    });
+    //});
+</script>

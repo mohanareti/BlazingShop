@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BlazingShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/open-iconic/font/css/open-iconic-bootstrap.css" />
+    
+</head>
+<body>
+    
+    <header style="position:fixed">
+        <nav class="navbar  navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">BlazingShop</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    @*<ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>*@
+                </div>
+            </div>
+        </nav>
+    </header>
+      
+    <div class="sidebar">
+        <ul class=" nav flex-column">
+            <li class="nav-item px-3">
+                <a class="active" href="/UserMvc/Index">
+                    <span class="oi oi-home" aria-hidden="true"></span>
+
+                    Home
+                </a>
+
+            </li>
+            @if (User.Identity.Name == "Admin")
+            {
+                <li class="nav-item px-3">
+                    <a class="active" href="/Productmvc/Index">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+
+                        Product
+                    </a>
+                </li>
+                <li class="nav-item px-3">
+                    <a class="active" href="/Categorymvc/Index">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+
+                        Category
+                    </a>
+                </li>
+                <li class="nav-item px-3">
+                    <a class="active" href="/AppointmentMvc/Index">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+
+                        Appointments
+                    </a>
+                </li>
+            }
+            else
+            {
+                if (User.Identity.IsAuthenticated == true)
+                {
+                <li class="nav-item px-3">
+                    <a class="active" href="/UserMvc/BookingDetails">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+                       YourAppointments
+                    </a>
+                </li>
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="container" style="text-align:justify">
+        <main role="main" class="pb-3">
+            
+                
+            @RenderBody()
+                    
+            
+        </main>
+    </div>
+
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<BlazingShop.DomainModel.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+<body style="background-color:aliceblue;">
+    @*<h1>Products </h1>
+        <div class="text-center">
+            <a asp-action="Create" asp-controller="ProductMvc" class="btn btn-outline-info">Add new Product</a>
+            <br/>
+            <br/>
+            <div class="container">
+                <table class="table">
+                    <tr>
+
+                        <th>PName</th>
+                        <th>Price</th>
+                        <th>ShadeColor</th>
+                        <th>Category Name</th>
+                        <th>Image</th>
+
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+
+                            <td>@item.PName</td>
+                            <td>@item.Price</td>
+                            <td>@item.ShadeColor</td>
+                            <td>@item.Category.CName</td>
+                            <td>
+                                <img src="~/Uploads/@item.Image"
+                                     height="80" width="80"
+                                     asp-append-version="true" />
+                            </td>
+                            <td><a asp-action="Edit" asp-controller="ProductMvc" asp-route-id="@item.PId" class="btn btn-primary">Edit</a></td>
+                            <td><a asp-action="Delete" asp-controller="ProductMvc" asp-route-id="@item.PId" class="btn btn-danger">Delete</a></td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+
+        </div>*@
+    <div class="content px-3">
+
+        <div class="container border p-3">
+            <div class="row">
+                <div class="col-5">
+                    <h3 class="text-info">Product List</h3>
+                </div>
+                <div class="col-3">
+                    <a asp-action="Create" class="btn btn-info form-control">
+                        Add New Product
+                    </a>
+                </div>
+            </div>
+
+            <div class="row pt-4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Shade Color</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.PName</td>
+                                <td>@item.Price</td>
+                                <td>@item.ShadeColor</td>
+                                <td>@item.Category.CName</td>
+                                <td>
+                                    <img src="~/Uploads/@item.Image"
+                                         height="80" width="80"
+                                         asp-append-version="true" />
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.PId" class="btn btn-primary">
+                                        Edit
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-action="Delete" asp-route-id="@item.PId" class="btn btn-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>

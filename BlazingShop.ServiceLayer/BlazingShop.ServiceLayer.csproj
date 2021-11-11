@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazingShop.DataLayer\BlazingShop.DataLayer.csproj" />
+    <ProjectReference Include="..\BlazingShop.DomainModel\BlazingShop.DomainModel.csproj" />
+    <ProjectReference Include="..\BlazingShop.ServiceContract\BlazingShop.ServiceContract.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BlazingShop.DomainModel.Appointment>
+@{ ViewData["Title"] = "BookingDetails"; }
+
+
+<body style="background-color: aliceblue;">
+    @if (!Model.Any())
+    {
+    <h1>NO Appointments Available </h1> }
+else
+{
+<div class="content px-3">
+    <div class="container border p-3">
+        <div class="row">
+            <div class="col-5">
+                <h3 class="text-info">Appointment List</h3>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row pt-4">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Product Name</th>
+                        <th>Date</th>
+                        <th>Confirmed</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+    <tr>
+
+
+        <td>@item.CustomerName</td>
+        <td>@item.CustomerEmail</td>
+        <td>@item.CustomerPhone</td>
+        <td>@item.Product.PName</td>
+        <td>
+            @item.AppointmentDate
+        </td>
+        <td>
+            @if (item.IsConfirmed == false)
+            {<input type="checkbox" class="form-control" disabled />}
+            else
+            { <input type="checkBox" checked class="form-control" disabled />}
+        </td>
+
+        <td><a asp-action="Delete" asp-controller="UserMvc" asp-route-id="@item.AId" class="btn btn-danger">Delete</a></td>
+    </tr>}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>}
+    </body>
+
